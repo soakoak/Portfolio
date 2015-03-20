@@ -1,5 +1,36 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+
+  .row
+    .col-md-offset-1.col-md-5
+      #about
+        h1 About me
+        p.
+          I'm 27-year old software developer who is currently studying his 4th year in Metropolia in Helsinki, Finland. 
+          Programming and techonology interest me, along with anime, reading, having debates over seemingly silly things, and games.
+          
+        p.
+          My life goal is to always improve myself. So far this year I have started to learn how to cook
+          and how to use Node.js, both of which have yielded great satisfaction despite my fears of them being either hard or 
+          simply repulsive.
+
+    .col-md-4.col-md-push-1
+      #contacts
+        h1 Contacts
+        ul.list-group
+
+          mixin list_item(icon, entry, link)
+            li.list-group-item
+              i.fa.fa-fw(class="fa-" + icon)
+              if link
+                a(href=link)
+                  =entry
+              else
+                =entry
+          
+          +list_item("envelope", "jedatermy87 at gmail.com")
+          +list_item("github-square", "Github", "https://github.com/soakoak")
+          +list_item("linkedin-square", "LinkedIn", "https://www.linkedin.com/profile/view?id=407471984")
+          +list_item("map-marker", "Espoo, Mätinkylä")
+          

@@ -1,0 +1,41 @@
+@bgColor: #281e0d;
+@contentColor: #ddc898;
+
+body {
+   background-color: @bgColor;
+
+   .container {
+      background: @contentColor;
+   }
+}
+
+header {
+   margin-top: 15px;
+}
+
+.border-box() {
+   padding: 0 20px 10px;
+   border: 3px solid @bgColor;
+}
+
+main {
+   margin: 15px 0 20px;
+
+   #about, #contacts {
+      .border-box();
+   }
+
+   #contacts ul {
+
+      box-shadow: none;
+
+      li {
+         background-color: @contentColor;
+         border: none;
+
+         i {
+            margin-right: 10px;
+         }
+      }
+   }
+}
