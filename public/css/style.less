@@ -1,5 +1,6 @@
 @bgColor: #281e0d;
 @contentColor: #ddc898;
+@projectBgColor: #EBD4A1;
 
 body {
    background-color: @bgColor;
@@ -21,6 +22,10 @@ header {
 main {
    margin: 15px 0 20px;
 
+   .flex-row {
+      display: inline-flex;
+   }
+
    #about, #contacts {
       .border-box();
    }
@@ -32,10 +37,21 @@ main {
       li {
          background-color: @contentColor;
          border: none;
+         padding-left: 8px;
+         padding-bottom: 3px;
 
          i {
             margin-right: 10px;
          }
+      }
+   }
+
+   #projects {
+      background-color: @projectBgColor;
+      margin-top: 30px;
+
+      .description {
+         margin-bottom: 30px;
       }
    }
 }
