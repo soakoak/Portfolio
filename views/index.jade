@@ -3,34 +3,146 @@ extends layout
 block content
 
   .row
-    .col-md-offset-1.col-md-5
-      #about
-        h1 About me
-        p.
-          I'm 27-year old software developer who is currently studying his 4th year in Metropolia in Helsinki, Finland. 
-          Programming and techonology interest me, along with anime, reading, having debates over seemingly silly things, and games.
-          
-        p.
-          My life goal is to always improve myself. So far this year I have started to learn how to cook
-          and how to use Node.js, both of which have yielded great satisfaction despite my fears of them being either hard or 
-          simply repulsive.
+    .col-md-10.col-md-offset-1
+      .row.flex-row
+        .col-md-6#about
+            h2 About me
+            p.
+              I'm 27-year old software developer who is currently studying his 4th year in Metropolia in Helsinki, Finland, whose
+               life goal is to always improve himself. 
+              Programming and techonology interest me, along with Japanese animation, reading, having debates over seemingly silly things, and games.
 
-    .col-md-4.col-md-push-1
-      #contacts
-        h1 Contacts
-        ul.list-group
+        .col-md-5.col-md-offset-1#contacts
+            h2 Contacts
+            ul.list-group
 
-          mixin list_item(icon, entry, link)
-            li.list-group-item
-              i.fa.fa-fw(class="fa-" + icon)
-              if link
-                a(href=link)
-                  =entry
-              else
-                =entry
-          
-          +list_item("envelope", "jedatermy87 at gmail.com")
-          +list_item("github-square", "Github", "https://github.com/soakoak")
-          +list_item("linkedin-square", "LinkedIn", "https://www.linkedin.com/profile/view?id=407471984")
-          +list_item("map-marker", "Espoo, Mätinkylä")
-          
+              mixin list_item(icon, entry, link)
+                li.list-group-item
+                  i.fa.fa-fw(class="fa-" + icon)
+                  if link
+                    a(href=link)
+                      =entry
+                  else
+                    =entry
+              
+              +list_item("envelope", "jedatermy87 at gmail.com")
+              +list_item("github-square", "Github", "https://github.com/soakoak")
+              +list_item("linkedin-square", "LinkedIn", "https://www.linkedin.com/profile/view?id=407471984")
+              +list_item("map-marker", "Espoo, Matinkylä")
+            
+      mixin full_row(page_break)
+        - var pageBreak
+        if page_break
+          -pageBreak = "<hr />"
+        else
+          -pageBreak = ""
+
+        !=pageBreak  
+        .row
+          .col-md-12
+            block
+
+      .row#projects
+        .col-md-12
+
+          h2 Projects
+
+          +full_row
+
+            h3 This Page
+
+            .description
+              p.
+                This page is powered by Node.js and deployed on Heroku. Page CSS has been written with LESS.
+
+              p.
+                <a>Note to self: upload source to Github.</a>
+
+            p.keywords.
+              Keywords: Node.js, Express, Jade, LESS, Bootstrap, HTML5, Git, Heroku.
+              
+
+          +full_row(true)
+
+            h3 MetCat 2.0
+
+            .description
+              p.
+                In this project my team's goal was to customize an existing template provided by Finna for the ends of Metropolia UAS's
+                 library. The project was fairly straight forward as most of the code base already existed and we had fairly good relations
+                 with the library representative. Probably the most difficult about the project was finding our way through the maze that is
+                 known as Smarty, and not being able to use convenient tools such as IDE or a version control system. The project was a really
+                 good chance for me to refresh my CSS and PHP knowledge, and to learn about challenges related to setting up a trivial database
+                 for production.
+              p.
+                The finished product can be viewed #[a(href="https://metropolia.finna-test.fi/kehitys/") Here].
+
+            p.keywords.
+              Keywords: PHP, Smarty, CSS, HTML, SQL.
+
+
+          +full_row(true)
+
+            h3 Lukkarisovellus
+
+            .description
+              p.
+                An Android-app which fetches reservation and realization data from Metropolia API and saves it locally to SQLite database. 
+                User can afterwards view the saved data offline and use it to make their own schedule. Currently work is still in progress,
+                 and the user can only save and view the data.
+
+              p.
+                #[a(href="https://github.com/soakoak/lukkari") Github repository.]
+
+            p.keywords.
+              Keywords: Android, Java, Scala, SQLite, JSON, Gson, Git.
+
+
+          +full_row(true)
+
+            h3 BMI-calculator
+
+            .description
+              p.
+                A small school project where the aim was to create a BMI-calculator using Google Web-Toolkit.
+                 The project was fairly simple to get working from the basic Hello World -template generated by Eclipse and
+                 probably the only challenging bit was figuring what goes where. <Note to self: kirjoita lisää>
+
+              p.
+                You can find running instance #[a(href="http://planar-weight.appspot.com/") here] and repository
+                 #[a(href="https://github.com/soakoak/miscellaneous/tree/master/google_web_toolkit/painoindeksi") here] (note to self: move repo as independent)
+
+            p.keywords.
+              Keywords: GWT, Java, Google App Engine.
+              
+
+          +full_row(true)
+
+            h3 Chat-room application
+
+            .description
+              p.
+                School project where the aim was to develop a chat room application that was to be deployed on Google App Engine.
+                 The platform and inexperience gave some restrictions to development, and instead of using more mainstream application frameworks such
+                 as Flask, Tornado, Django, I ended using pure webapp2. For templates I used Jinja2.
+                 #[a(href="https://cloud.google.com/appengine/docs/python/gettingstartedpython27/introduction") Both webapp2 and Jinja2 are endorsed by Google.]
+
+              p.
+                The project was really challenging at the time, since I had to learn how to make AJAX-calls along with having to deal with
+                 webpage design, even if I gained some help to design from Bootstrap CSS-library, which was introduced to me at the time. 
+                 The web application involved handling database in form of storing the chat messages to Google App Engine's servers, which was thankfully
+                 rather easy thanks to the NDB ORM library provided natively by webapp2.
+
+              p.
+                Having mostly written Java before the project, getting to use script-language such as Python was a really fresh breeze and
+                 really left into me a strong impression. I have had interest towards functional languages ever since the project, and led me
+                 to such madness as embedding Scala-code to a separate, previously purely Java, Android project. Though I don't think I will
+                 return to coding webapp2 again, this project will always carry on within me.
+
+              p.
+                You can find running instance #[a(href="http://planar-strap-123.appspot.com/") here] and repository
+                 #[a(href="https://github.com/soakoak/miscellaneous/tree/master/planar-strap-123") here] (note to self: move repo as independent)
+
+            p.keywords.
+              Keywords: Python, Google App Engine, webapp2, Jinja2, AJAX, ORM.
+
